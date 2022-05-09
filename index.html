@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>trujkont bermucki</title>
+    <style>
+        #Obrazek{
+            position: fixed;
+            left:50%;
+            top:60%;
+            transform:translate(-50%,-50%);
+            background-color: white;
+            width: 500px;
+            height: 600px;
+        }
+        #A{
+            position: fixed;
+            top: 30%;
+            left: 18%;
+            transform:translate(-50%,-50%);
+        }
+        #C{
+            position: fixed;
+            top: 30%;
+            left: 60%;
+            transform:translate(-50%,-50%);
+        }
+        #B{
+            position: fixed;
+            top: 58%;
+            left: 45%;
+            transform:translate(-50%,-50%);
+        }
+        #Alfa{
+            position: fixed;
+            top: 52%;
+            left: 74%;
+            transform:translate(-50%,-50%);
+        }
+        input{
+            width: 40px;
+            
+        }
+        #mondre{
+            position:fixed;
+            left: 100%;
+            top:100%;
+            transform:translate(-100%,-100%);
+            width: 300px;
+            
+        }
+        th{
+            border: 1px solid black;
+        }
+        td{
+            border: 1px solid black;
+            width: 800px;
+            text-align: center;
+        }
+
+        
+    </style>
+    <script>
+
+
+        function licz(){
+            var A = document.getElementById('AA').value;
+            var B = document.getElementById('BB').value;
+            var C = document.getElementById('CC').value;
+            var Alfa;
+            var sin;
+            var cos;
+            var tan;
+            var cot;
+
+            if (A==0 && B!=0 && C!=0){
+                A = Math.sqrt((C*C)-(B*B));
+                document.getElementById("AA").remove();
+                document.getElementById("A").innerHTML="A = "+Math.round(A*10000)/10000;
+                document.getElementById("BB").remove();
+                document.getElementById("B").innerHTML="B = "+Math.round(B*10000)/10000;
+                document.getElementById("CC").remove();
+                document.getElementById("C").innerHTML="C = "+Math.round(C*10000)/10000;
+            }
+            else if (A!=0 && B==0 && C!=0){
+                B = Math.sqrt((C*C)-(A*A));
+                document.getElementById("AA").remove();
+                document.getElementById("A").innerHTML="A = "+Math.round(A*10000)/10000;
+                document.getElementById("BB").remove();
+                document.getElementById("B").innerHTML="B = "+Math.round(B*10000)/10000;
+                document.getElementById("CC").remove();
+                document.getElementById("C").innerHTML="C = "+Math.round(C*10000)/10000;
+            }
+            else if (A!=0 && B!=0 && C==0){
+                C = Math.sqrt((A*A)+(B*B));
+                document.getElementById("AA").remove();
+                document.getElementById("A").innerHTML="A = "+Math.round(A*10000)/10000;
+                document.getElementById("BB").remove();
+                document.getElementById("B").innerHTML="B = "+Math.round(B*10000)/10000;
+                document.getElementById("CC").remove();
+                document.getElementById("C").innerHTML="C = "+Math.round(C*10000)/10000;
+            }
+            
+
+                if ((A*A) + (B*B) - (C*C) > -0.1 && (A*A) + (B*B) - (C*C) < 0.1){
+                    sin = A/C;
+                    cos = B/C;
+                    tan = A/B;
+                    cot = B/A;
+                    document.getElementById("Alfa").innerHTML = "α = "+Math.round(Math.asin(sin)*10 * (180/Math.PI))/10;
+                    //alert(Math.round(Math.asin(sin)*10 * (180/Math.PI))/10);
+                    document.getElementById("sin").innerHTML = Math.round(sin*10000)/10000;
+                    document.getElementById("cos").innerHTML = Math.round(cos*10000)/10000;
+                    document.getElementById("tan").innerHTML = Math.round(tan*10000)/10000;
+                    document.getElementById("cot").innerHTML = Math.round(cot*10000)/10000;
+                    document.getElementById("guzik").remove();
+                }
+                else{
+                    alert("złe dane");
+                }
+               
+            }
+        
+    </script>
+</head>
+<body>
+    <div id="Obrazek">
+        <img src="trygonometry.png" width="400px" height="auto">
+        <p id="A">A = <input id="AA" type="number" max="100" min="0"required="required"> </p>
+        <p id="C">C = <input id="CC" type="number" max="100" min="0"required="required"> </p>
+        <p id="B">B = <input id="BB" type="number" max="100" min="0"required="required"> </p>
+        <p id="Alfa">α = xx</p>
+        <input id="guzik"type="button" name="button" onclick="licz();" value="Licz">
+    </div>
+    <table id="mondre">
+        <tr>
+          <th>Sin</th>
+          <th>Cos</th>
+          <th>Tan</th>
+          <th>Cot</th>
+        </tr>
+        <tr>
+          <td id="sin">&nbsp;</td>
+          <td id="cos">&nbsp;</td>
+          <td id="tan">&nbsp;</td>
+          <td id="cot">&nbsp;</td>
+        </tr>
+
+      </table> 
+</body>
+</html>
